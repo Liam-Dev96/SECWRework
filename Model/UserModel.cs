@@ -25,6 +25,5 @@ namespace SECWRework.Model
         [Column("Role")]
         public string? Role { get; set; }
 
-
     }
 }

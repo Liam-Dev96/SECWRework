@@ -1,4 +1,4 @@
-﻿namespace SECWRework
+﻿namespace SECWRework.Views
 {
     public partial class AppShell : Shell
     {

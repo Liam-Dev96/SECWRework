@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SECWRework.Views.MainPage">
+
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray">
+            <Entry Text="{Binding FirstName}" Placeholder="Enter First Name"/>
+            <Entry Text="{Binding LastName}" Placeholder="Enter Last Name"/>
+            <Entry Text="{Binding Email}" Placeholder="Enter email"/>
+            <Entry Text="{Binding PhoneNumber}" Placeholder="Enter phone number"/>
+            <Picker Title="Select user role" SelectedItem="{Binding SelectedRole}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Admin</x:String>
+                        <x:String>Operations Manager</x:String>
+                        <x:String>Environmental Scientist</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Save" Command="{Binding SaveAsyncCommand}" />
+            <Button Text="Backup Database" Command="{Binding BackupAsyncCommand}" />
+            <Button Text="Restore Database" Command="{Binding RestoreAsyncCommand}" />
+
+        </VerticalStackLayout>
+        <ListView x:Name="listView" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}" FlexLayout.Grow="1" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="3">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding FirstName}" FontSize="Medium" />
+                                <Label Grid.Column="1" Text="{Binding LastName}" FontSize="Medium" />
+                                <Label Grid.Column="2" Text="{Binding Email}" FontSize="Medium" />
+                                <Label Grid.Column="3" Text="{Binding PhoneNumber}" FontSize="Medium" />
+                                <Label Grid.Column="4" Text="{Binding SelectedRole}" FontSize="Medium" />                                                              
+                                <Button Grid.Column="5" Text="Edit" Command="{Binding EditUserCommand}" />
+                                <Button Grid.Column="6" Text="Delete" Command="{Binding DeleteUserAsyncCommand}" />                                        
+                            </Grid>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+</FlexLayout>                                                         
+
+</ContentPage>
