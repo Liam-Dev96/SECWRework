@@ -27,7 +27,7 @@ namespace SECWRework;
                     L_Name = lastNameEntry.Text,
                     Email = emailEntry.Text,
                     Phone_number = phoneEntry.Text,
-                    Role = roleEntry.Text
+                    Role = rolePicker.SelectedItem?.ToString()
                 });
             }
             else
@@ -39,7 +39,7 @@ namespace SECWRework;
                     L_Name = lastNameEntry.Text,
                     Email = emailEntry.Text,
                     Phone_number = phoneEntry.Text,
-                    Role = roleEntry.Text
+                    Role = rolePicker.SelectedItem?.ToString()
                 });
                 _editUserId = 0;
             }
@@ -47,7 +47,7 @@ namespace SECWRework;
             lastNameEntry.Text = string.Empty;
             emailEntry.Text = string.Empty;
             phoneEntry.Text = string.Empty;
-            roleEntry.Text = string.Empty;
+            rolePicker.SelectedItem = string.Empty;
 
             listView.ItemsSource = await _dbService.GetAllUsers();
 
@@ -65,7 +65,7 @@ namespace SECWRework;
                     lastNameEntry.Text = user.L_Name;
                     emailEntry.Text = user.Email;
                     phoneEntry.Text = user.Phone_number;
-                    roleEntry.Text = user.Role;
+                    rolePicker.SelectedItem = user.Role;
                     _editUserId = user.Id;
                     break;
                 case "Delete":
