@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SECWRework.Services;
 
 namespace SECWRework
 {
@@ -15,6 +16,8 @@ namespace SECWRework
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "SoftwareEngineering.db");
+            builder.Services.AddSingleton(new BackupService(dbPath));
             builder.Services.AddSingleton<LocalDBService>();
             builder.Services.AddTransient<MainPage>();
 

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using SECWRework.Model;
+using SECWRework.Services;
 
 namespace SECWRework;
 
@@ -7,12 +8,14 @@ namespace SECWRework;
     {
 
         private readonly LocalDBService _dbService;
+        private readonly BackupService _backupService;
         private int _editUserId;
 
-        public MainPage(LocalDBService dbService)
+        public MainPage(LocalDBService dbService, BackupService backupService)
         {
             InitializeComponent();
             _dbService = dbService;
+            _backupService = backupService;
             Task.Run(async () => listView.ItemsSource = await _dbService.GetAllUsers());
         }
 
@@ -73,6 +76,21 @@ namespace SECWRework;
                     listView.ItemsSource = await _dbService.GetAllUsers();
                     break;
             }
+        }
+
+        private async void BackupButton_Clicked(object sender, EventArgs e)
+        {
+            string backupPath = Path.Combine(FileSystem.AppDataDirectory, "Backup.db");
+            await _backupService.BackupDatabaseAsync(backupPath);
+            await DisplayAlert("Success", "Database backup completed.", "OK");
+        }
+
+        private async void RestoreButton_Clicked(object sender, EventArgs e)
+        {
+            string backupPath = Path.Combine(FileSystem.AppDataDirectory, "Backup.db");
+            await _backupService.RestoreDatabaseAsync(backupPath);
+            await DisplayAlert("Success", "Database restored successfully.", "OK");
+            listView.ItemsSource = await _dbService.GetAllUsers();
         }
 
     }
