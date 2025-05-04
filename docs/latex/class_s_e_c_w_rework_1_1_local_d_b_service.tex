@@ -1,0 +1,131 @@
+\doxysection{SECWRework.\+Local\+DBService Class Reference}
+\hypertarget{class_s_e_c_w_rework_1_1_local_d_b_service}{}\label{class_s_e_c_w_rework_1_1_local_d_b_service}\index{SECWRework.LocalDBService@{SECWRework.LocalDBService}}
+
+
+Service for interacting with the local SQLite database.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_s_e_c_w_rework_1_1_local_d_b_service_aa4e184b051e12504080f0e7d2c9b9b83}{Local\+DBService}} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \doxylink{class_s_e_c_w_rework_1_1_local_d_b_service}{Local\+DBService} class. Creates the database connection and initializes the User table. \end{DoxyCompactList}\item 
+async Task$<$ List$<$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}} $>$ $>$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_local_d_b_service_aa96574a69103e7e1842829abca4b331d}{Get\+All\+Users}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves all users from the database. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}} $>$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_local_d_b_service_aba24ca39dbca91760a4e1a0d4552e8fc}{Get\+User\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Retrieves a user by their ID. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_local_d_b_service_a3750dd6acdfc58a52de43faab73581ed}{Add\+User}} (\mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}} user)
+\begin{DoxyCompactList}\small\item\em Adds a new user to the database. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_local_d_b_service_a5d48a3d96df9cf7049fdc653846e2b4f}{Update\+User}} (\mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}} user)
+\begin{DoxyCompactList}\small\item\em Updates an existing user in the database. \end{DoxyCompactList}\item 
+async Task$<$ int $>$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_local_d_b_service_ad3515f88bd5ee07a49d7a8acc99c8bf8}{Delete\+User}} (\mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}} user)
+\begin{DoxyCompactList}\small\item\em Deletes a user from the database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service for interacting with the local SQLite database. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_s_e_c_w_rework_1_1_local_d_b_service_aa4e184b051e12504080f0e7d2c9b9b83}\index{SECWRework.LocalDBService@{SECWRework.LocalDBService}!LocalDBService@{LocalDBService}}
+\index{LocalDBService@{LocalDBService}!SECWRework.LocalDBService@{SECWRework.LocalDBService}}
+\doxysubsubsection{\texorpdfstring{LocalDBService()}{LocalDBService()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_local_d_b_service_aa4e184b051e12504080f0e7d2c9b9b83} 
+SECWRework.\+Local\+DBService.\+Local\+DBService (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initializes a new instance of the \doxylink{class_s_e_c_w_rework_1_1_local_d_b_service}{Local\+DBService} class. Creates the database connection and initializes the User table. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_s_e_c_w_rework_1_1_local_d_b_service_a3750dd6acdfc58a52de43faab73581ed}\index{SECWRework.LocalDBService@{SECWRework.LocalDBService}!AddUser@{AddUser}}
+\index{AddUser@{AddUser}!SECWRework.LocalDBService@{SECWRework.LocalDBService}}
+\doxysubsubsection{\texorpdfstring{AddUser()}{AddUser()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_local_d_b_service_a3750dd6acdfc58a52de43faab73581ed} 
+async Task$<$ int $>$ SECWRework.\+Local\+DBService.\+Add\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}}}]{user}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a new user to the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & The user to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows added.
+\end{DoxyReturn}
+\Hypertarget{class_s_e_c_w_rework_1_1_local_d_b_service_ad3515f88bd5ee07a49d7a8acc99c8bf8}\index{SECWRework.LocalDBService@{SECWRework.LocalDBService}!DeleteUser@{DeleteUser}}
+\index{DeleteUser@{DeleteUser}!SECWRework.LocalDBService@{SECWRework.LocalDBService}}
+\doxysubsubsection{\texorpdfstring{DeleteUser()}{DeleteUser()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_local_d_b_service_ad3515f88bd5ee07a49d7a8acc99c8bf8} 
+async Task$<$ int $>$ SECWRework.\+Local\+DBService.\+Delete\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}}}]{user}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Deletes a user from the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & The user to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows deleted.
+\end{DoxyReturn}
+\Hypertarget{class_s_e_c_w_rework_1_1_local_d_b_service_aa96574a69103e7e1842829abca4b331d}\index{SECWRework.LocalDBService@{SECWRework.LocalDBService}!GetAllUsers@{GetAllUsers}}
+\index{GetAllUsers@{GetAllUsers}!SECWRework.LocalDBService@{SECWRework.LocalDBService}}
+\doxysubsubsection{\texorpdfstring{GetAllUsers()}{GetAllUsers()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_local_d_b_service_aa96574a69103e7e1842829abca4b331d} 
+async Task$<$ List$<$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}} $>$ $>$ SECWRework.\+Local\+DBService.\+Get\+All\+Users (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves all users from the database. 
+
+\begin{DoxyReturn}{Returns}
+A list of all users.
+\end{DoxyReturn}
+\Hypertarget{class_s_e_c_w_rework_1_1_local_d_b_service_aba24ca39dbca91760a4e1a0d4552e8fc}\index{SECWRework.LocalDBService@{SECWRework.LocalDBService}!GetUserById@{GetUserById}}
+\index{GetUserById@{GetUserById}!SECWRework.LocalDBService@{SECWRework.LocalDBService}}
+\doxysubsubsection{\texorpdfstring{GetUserById()}{GetUserById()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_local_d_b_service_aba24ca39dbca91760a4e1a0d4552e8fc} 
+async Task$<$ \mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}} $>$ SECWRework.\+Local\+DBService.\+Get\+User\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves a user by their ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the user to retrieve.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The user with the specified ID, or null if not found.
+\end{DoxyReturn}
+\Hypertarget{class_s_e_c_w_rework_1_1_local_d_b_service_a5d48a3d96df9cf7049fdc653846e2b4f}\index{SECWRework.LocalDBService@{SECWRework.LocalDBService}!UpdateUser@{UpdateUser}}
+\index{UpdateUser@{UpdateUser}!SECWRework.LocalDBService@{SECWRework.LocalDBService}}
+\doxysubsubsection{\texorpdfstring{UpdateUser()}{UpdateUser()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_local_d_b_service_a5d48a3d96df9cf7049fdc653846e2b4f} 
+async Task$<$ int $>$ SECWRework.\+Local\+DBService.\+Update\+User (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_s_e_c_w_rework_1_1_model_1_1_user_model}{User\+Model}}}]{user}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates an existing user in the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & The user to update.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of rows updated.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Services/\mbox{\hyperlink{_local_d_b_service_8cs}{Local\+DBService.\+cs}}\end{DoxyCompactItemize}
