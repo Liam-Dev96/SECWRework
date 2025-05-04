@@ -6,8 +6,15 @@ using System.Collections.ObjectModel;
 
 namespace SECWRework
 {
+    /// <summary>
+    /// Configures and builds the Maui application.
+    /// </summary>
     public static class MauiProgram
     {
+        /// <summary>
+        /// Creates and configures the Maui application.
+        /// </summary>
+        /// <returns>A configured MauiApp instance.</returns>
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -25,8 +32,6 @@ namespace SECWRework
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MainViewModel>();
-
-
 
 #if DEBUG
             builder.Logging.AddDebug();
