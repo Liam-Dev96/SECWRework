@@ -5,11 +5,11 @@
 
     <FlexLayout Direction="Column">
         <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray">
-            <Entry x:Name="firstNameEntry" Placeholder="Enter First Name"/>
-            <Entry x:Name="lastNameEntry" Placeholder="Enter Last Name"/>
-            <Entry x:Name="emailEntry" Placeholder="Enter email"/>
-            <Entry x:Name="phoneEntry" Placeholder="Enter phone number"/>
-            <Picker x:Name="rolePicker" Title="Select user role">
+            <Entry Text="{Binding FirstName}" Placeholder="Enter First Name"/>
+            <Entry Text="{Binding LastName}" Placeholder="Enter Last Name"/>
+            <Entry Text="{Binding Email}" Placeholder="Enter email"/>
+            <Entry Text="{Binding PhoneNumber}" Placeholder="Enter phone number"/>
+            <Picker Title="Select user role" SelectedItem="{Binding SelectedRole}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Admin</x:String>
@@ -18,15 +18,17 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Button Text="Save" Command="{Binding SaveCommand}" />
-            <Button Text="Backup Database" Command="{Binding BackupCommand}" />
-            <Button Text="Restore Database" Command="{Binding RestoreCommand}" />
+
+            <Button Text="Save" Command="{Binding SaveAsyncCommand}" />
+            <Button Text="Backup Database" Command="{Binding BackupAsyncCommand}" />
+            <Button Text="Restore Database" Command="{Binding RestoreAsyncCommand}" />
+
         </VerticalStackLayout>
-        <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
-            <ListView.ItemTemplate>
+        <ListView x:Name="listView" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}" FlexLayout.Grow="1" HasUnevenRows="True">
+                <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <VerticalStackLayout Padding="5">
+                        <VerticalStackLayout Padding="3">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -38,19 +40,22 @@
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding F_Name}" FontSize="Medium" />
-                                <Label Grid.Column="2" Text="{Binding L_Name}" FontSize="Medium" />
-                                <Label Grid.Column="4" Text="{Binding Email}" FontSize="Medium" />
-                                <Label Grid.Column="6" Text="{Binding Phone_number}" FontSize="Medium" />
-                                <Label Grid.Column="8" Text="{Binding Role}" FontSize="Medium" />
+                                <Label Grid.Column="0" Text="{Binding FirstName}" FontSize="Medium" />
+                                <Label Grid.Column="1" Text="{Binding LastName}" FontSize="Medium" />
+                                <Label Grid.Column="2" Text="{Binding Email}" FontSize="Medium" />
+                                <Label Grid.Column="3" Text="{Binding PhoneNumber}" FontSize="Medium" />
+                                <Label Grid.Column="4" Text="{Binding SelectedRole}" FontSize="Medium" />                                                              
+                                <Button Grid.Column="5" Text="Edit" Command="{Binding EditUserCommand}" />
+                                <Button Grid.Column="6" Text="Delete" Command="{Binding DeleteUserAsyncCommand}" />                                        
                             </Grid>
                         </VerticalStackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-    </FlexLayout>                                                         
+</FlexLayout>                                                         
 
 </ContentPage>

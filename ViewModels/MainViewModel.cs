@@ -11,25 +11,55 @@ namespace SECWRework.ViewModels
         private readonly LocalDBService _dbService;
         private readonly BackupService _backupService;
 
-        [ObservableProperty]
         private string firstName = string.Empty;
 
-        [ObservableProperty]
+        public string FirstName
+        {
+            get => firstName;
+            set => SetProperty(ref firstName, value);
+        }
+
         private string lastName = string.Empty;
 
-        [ObservableProperty]
+        public string LastName
+        {
+            get => lastName;
+            set => SetProperty(ref lastName, value);
+        }
+
         private string email = string.Empty;
 
-        [ObservableProperty]
+        public string Email
+        {
+            get => email;
+            set => SetProperty(ref email, value);
+        }
+
         private string phoneNumber = string.Empty;
 
-        [ObservableProperty]
+        public string PhoneNumber
+        {
+            get => phoneNumber;
+            set => SetProperty(ref phoneNumber, value);
+        }
+
         private string selectedRole = string.Empty;
 
-        [ObservableProperty]
-        private UserModel selectedUser = new UserModel();
+        public string SelectedRole
+        {
+            get => selectedRole;
+            set => SetProperty(ref selectedRole, value);
+        }
 
-        public ObservableCollection<UserModel> Users { get; } = new();
+        private UserModel? selectedUser;
+
+        public UserModel? SelectedUser
+        {
+            get => selectedUser;
+            set => SetProperty(ref selectedUser, value);
+        }
+
+        public ObservableCollection<UserModel> Users { get; } = [];
 
         private int _editUserId;
 
@@ -51,7 +81,7 @@ namespace SECWRework.ViewModels
         }
 
         [RelayCommand]
-        public async Task SaveAsync()
+        public async void SaveAsync()
         {
             if (_editUserId == 0)
             {
@@ -83,7 +113,7 @@ namespace SECWRework.ViewModels
         }
 
         [RelayCommand]
-        public async Task DeleteUserAsync(UserModel user)
+        public async void DeleteUserAsync(UserModel user)
         {
             await _dbService.DeleteUser(user);
             LoadUsers();
@@ -92,35 +122,32 @@ namespace SECWRework.ViewModels
         [RelayCommand]
         public void EditUser(UserModel user)
         {
-            FirstName = user.F_Name ?? string.Empty;
-            LastName = user.L_Name ?? string.Empty;
-            Email = user.Email ?? string.Empty;
-            PhoneNumber = user.Phone_number ?? string.Empty;
-            SelectedRole = user.Role ?? string.Empty;
-            _editUserId = user.Id;
+            if (user != null)
+            {
+                _editUserId = user.Id; // Set the ID for updating
+                FirstName = user.F_Name ?? string.Empty; // Load the user's first name into the form
+                LastName = user.L_Name ?? string.Empty; // Load the user's last name into the form
+                Email = user.Email ?? string.Empty; // Load the user's email into the form
+                PhoneNumber = user.Phone_number ?? string.Empty; // Load the user's phone number into the form
+                SelectedRole = user.Role ?? string.Empty; // Load the user's role into the form
+            }
         }
 
         [RelayCommand]
-        public async Task BackupAsync()
+        public async void BackupAsync()
         {
             string backupPath = Path.Combine(FileSystem.AppDataDirectory, "Backup.db");
             await _backupService.BackupDatabaseAsync(backupPath);
-            if (Application.Current?.MainPage != null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Success", "Database backup completed.", "OK");
-            }
+            Console.WriteLine($"Database backed up to {backupPath}");
         }
 
         [RelayCommand]
-        public async Task RestoreAsync()
+        public async void RestoreAsync()
         {
             string backupPath = Path.Combine(FileSystem.AppDataDirectory, "Backup.db");
             await _backupService.RestoreDatabaseAsync(backupPath);
-            if (App.Current?.MainPage != null)
-            {
-                await App.Current.MainPage.DisplayAlert("Success", "Database restored successfully.", "OK");
-            }
             LoadUsers();
+            Console.WriteLine($"Database restored from {backupPath}");
         }
 
         private void ClearForm()
@@ -131,5 +158,7 @@ namespace SECWRework.ViewModels
             PhoneNumber = string.Empty;
             SelectedRole = string.Empty;
         }
+
+
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using SECWRework.Services;
 using SECWRework.Views;
+using SECWRework.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace SECWRework
 {
@@ -10,7 +12,7 @@ namespace SECWRework
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiApp<App>()
+                .UseMauiApp<App>() 
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -22,6 +24,9 @@ namespace SECWRework
             builder.Services.AddSingleton<LocalDBService>();
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainViewModel>();
+
+
 
 #if DEBUG
             builder.Logging.AddDebug();
