@@ -1,12 +1,13 @@
-﻿namespace SECWRework
+﻿using SECWRework.Views;
+
+namespace SECWRework
 {
     public partial class App : Application
     {
-        public App(MainPage mainPage)
+        public App()
         {
             InitializeComponent();
-
-            MainPage = mainPage;
+            MainPage = new AppShell();
         }
     }
 }

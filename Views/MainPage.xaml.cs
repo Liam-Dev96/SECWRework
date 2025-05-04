@@ -2,8 +2,8 @@
 using SECWRework.Model;
 using SECWRework.Services;
 
-namespace SECWRework;
-
+namespace SECWRework.Views
+{
     public partial class MainPage : ContentPage
     {
 
@@ -94,4 +94,5 @@ namespace SECWRework;
         }
 
     }
+}
 

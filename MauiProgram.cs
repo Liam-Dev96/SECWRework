@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using SECWRework.Services;
+using SECWRework.Views;
 
 namespace SECWRework
 {
@@ -19,6 +20,7 @@ namespace SECWRework
             string dbPath = Path.Combine(FileSystem.AppDataDirectory, "SoftwareEngineering.db");
             builder.Services.AddSingleton(new BackupService(dbPath));
             builder.Services.AddSingleton<LocalDBService>();
+            builder.Services.AddSingleton<AppShell>();
             builder.Services.AddTransient<MainPage>();
 
 #if DEBUG
