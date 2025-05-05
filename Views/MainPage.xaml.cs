@@ -4,9 +4,16 @@ using SECWRework.ViewModels;
 
 namespace SECWRework.Views
 {
+    /// <summary>
+    /// Represents the main page of the application.
+    /// </summary>
     public partial class MainPage : ContentPage
     {
-        private readonly LocalDBService _dbService ;
+        private readonly LocalDBService _dbService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainPage"/> class.
+        /// </summary>
         public MainPage()
         {
             InitializeComponent();
