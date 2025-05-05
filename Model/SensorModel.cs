@@ -5,7 +5,7 @@ namespace SECWRework.Model
     /// <summary>
     /// Represents a sensor and its operational data.
     /// </summary>
-    [Table("Sensor")]
+    [Table("SensorMetadata")]
     public class SensorModel
     {
         /// <summary>
