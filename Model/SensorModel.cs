@@ -63,5 +63,17 @@ namespace SECWRework.Model
         /// </summary>
         [Column("Location")]
         public string? Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the historical measurements of the sensor.
+        /// </summary>
+        [Ignore] // Exclude from database mapping
+        public List<double> HistoricalMeasurements { get; set; } = new();
+
+        /// <summary>
+        /// Gets or sets the timestamps for the historical measurements.
+        /// </summary>
+        [Ignore] // Exclude from database mapping
+        public List<DateTime> Timestamps { get; set; } = new();
     }
 }

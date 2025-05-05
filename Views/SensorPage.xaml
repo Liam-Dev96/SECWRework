@@ -4,10 +4,13 @@
              x:Class="SECWRework.Views.SensorPage"
              Title="Sensor Monitoring">
 
-    <ScrollView>
+    <ScrollView>        
         <VerticalStackLayout Padding="10">
             <Label Text="Sensor Monitoring" FontSize="Large" HorizontalOptions="Center" />
-
+            <Button Text="Generate Report" Clicked="OnGenerateReportClicked" />
+            <ScrollView>
+            <Label x:Name="ReportLabel" Text="Report will appear here..." />
+            </ScrollView>
             <CollectionView ItemsSource="{Binding Sensors}" SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

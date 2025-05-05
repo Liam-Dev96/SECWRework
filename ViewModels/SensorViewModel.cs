@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 using SECWRework.Model;
 using SECWRework.Services;
@@ -32,7 +33,6 @@ namespace SECWRework.ViewModels
         /// </summary>
         private async void LoadSensors()
         {
-     
             var sensors = await _dbService.GetAllSensors();
             Sensors.Clear();
             foreach (var sensor in sensors)
@@ -41,6 +41,26 @@ namespace SECWRework.ViewModels
             }
         }
 
-        
+        /// <summary>
+        /// Generates a report on environmental trends.
+        /// </summary>
+        public string GenerateReport()
+        {
+            var report = new StringBuilder("Environmental Trends Report\n\n");
+
+            foreach (var sensor in Sensors)
+            {
+                report.AppendLine($"Sensor: {sensor.Quantity} ({sensor.Unit})");
+                report.AppendLine($"Status: {sensor.Status}");
+                report.AppendLine("Measurements:");
+                for (int i = 0; i < sensor.HistoricalMeasurements.Count; i++)
+                {
+                    report.AppendLine($"  {sensor.Timestamps[i]}: {sensor.HistoricalMeasurements[i]}");
+                }
+                report.AppendLine();
+            }
+
+            return report.ToString();
+        }
     }
 }
