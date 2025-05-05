@@ -1,0 +1,81 @@
+\doxysection{SECWRework.\+Services.\+Backup\+Service Class Reference}
+\hypertarget{class_s_e_c_w_rework_1_1_services_1_1_backup_service}{}\label{class_s_e_c_w_rework_1_1_services_1_1_backup_service}\index{SECWRework.Services.BackupService@{SECWRework.Services.BackupService}}
+
+
+Service for handling database backup and restore operations.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_s_e_c_w_rework_1_1_services_1_1_backup_service_a765452066be91ced8c9fd40c599f8a13}{Backup\+Service}} (string db\+Path)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \doxylink{class_s_e_c_w_rework_1_1_services_1_1_backup_service}{Backup\+Service} class. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_s_e_c_w_rework_1_1_services_1_1_backup_service_af2b2dd78291087a889096dbbb32e30ca}{Backup\+Database\+Async}} (string backup\+Path)
+\begin{DoxyCompactList}\small\item\em Creates a backup of the database at the specified path. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_s_e_c_w_rework_1_1_services_1_1_backup_service_adca65bf2b0cdd4f6a47c0e7d33873e3c}{Restore\+Database\+Async}} (string backup\+Path)
+\begin{DoxyCompactList}\small\item\em Restores the database from a backup file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Service for handling database backup and restore operations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_s_e_c_w_rework_1_1_services_1_1_backup_service_a765452066be91ced8c9fd40c599f8a13}\index{SECWRework.Services.BackupService@{SECWRework.Services.BackupService}!BackupService@{BackupService}}
+\index{BackupService@{BackupService}!SECWRework.Services.BackupService@{SECWRework.Services.BackupService}}
+\doxysubsubsection{\texorpdfstring{BackupService()}{BackupService()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_services_1_1_backup_service_a765452066be91ced8c9fd40c599f8a13} 
+SECWRework.\+Services.\+Backup\+Service.\+Backup\+Service (\begin{DoxyParamCaption}\item[{string}]{db\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initializes a new instance of the \doxylink{class_s_e_c_w_rework_1_1_services_1_1_backup_service}{Backup\+Service} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & The path to the database file.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_s_e_c_w_rework_1_1_services_1_1_backup_service_af2b2dd78291087a889096dbbb32e30ca}\index{SECWRework.Services.BackupService@{SECWRework.Services.BackupService}!BackupDatabaseAsync@{BackupDatabaseAsync}}
+\index{BackupDatabaseAsync@{BackupDatabaseAsync}!SECWRework.Services.BackupService@{SECWRework.Services.BackupService}}
+\doxysubsubsection{\texorpdfstring{BackupDatabaseAsync()}{BackupDatabaseAsync()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_services_1_1_backup_service_af2b2dd78291087a889096dbbb32e30ca} 
+async Task SECWRework.\+Services.\+Backup\+Service.\+Backup\+Database\+Async (\begin{DoxyParamCaption}\item[{string}]{backup\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates a backup of the database at the specified path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em backup\+Path} & The path where the backup file will be saved.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A task representing the asynchronous operation.
+\end{DoxyReturn}
+\Hypertarget{class_s_e_c_w_rework_1_1_services_1_1_backup_service_adca65bf2b0cdd4f6a47c0e7d33873e3c}\index{SECWRework.Services.BackupService@{SECWRework.Services.BackupService}!RestoreDatabaseAsync@{RestoreDatabaseAsync}}
+\index{RestoreDatabaseAsync@{RestoreDatabaseAsync}!SECWRework.Services.BackupService@{SECWRework.Services.BackupService}}
+\doxysubsubsection{\texorpdfstring{RestoreDatabaseAsync()}{RestoreDatabaseAsync()}}
+{\footnotesize\ttfamily \label{class_s_e_c_w_rework_1_1_services_1_1_backup_service_adca65bf2b0cdd4f6a47c0e7d33873e3c} 
+async Task SECWRework.\+Services.\+Backup\+Service.\+Restore\+Database\+Async (\begin{DoxyParamCaption}\item[{string}]{backup\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Restores the database from a backup file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em backup\+Path} & The path to the backup file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A task representing the asynchronous operation.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Services/\mbox{\hyperlink{_backup_service_8cs}{Backup\+Service.\+cs}}\end{DoxyCompactItemize}
