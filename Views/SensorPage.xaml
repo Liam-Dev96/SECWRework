@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SECWRework.Views.SensorPage"
+             Title="Sensor Monitoring">
+
+    <VerticalStackLayout Padding="10">
+        <Label Text="Sensor Monitoring" FontSize="Large" HorizontalOptions="Center" />
+        <ListView ItemsSource="{Binding Sensors}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Label Text="{Binding Quantity}" FontSize="Medium" />
+                            <Label Text="{Binding Category}" FontSize="Small" />
+                            <Label Text="{Binding Status}" FontSize="Small" />
+                            <Label Text="{Binding Location}" FontSize="Small" />
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

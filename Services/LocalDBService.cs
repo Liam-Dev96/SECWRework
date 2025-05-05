@@ -76,5 +76,19 @@ namespace SECWRework
         {
             return await _connection.DeleteAsync(user);
         }
+
+        /// <summary>
+        /// Retrieves all sensors from the database.
+        /// </summary>
+        /// <returns>A list of all sensors.</returns>
+        public async Task<List<SensorModel>> GetAllSensors()
+        {
+            return await _connection.Table<SensorModel>().ToListAsync();
+        }
+
+        public async Task<SensorModel> GetSensorById(int id)
+        {
+            return await _connection.Table<SensorModel>().Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
     }
 }
