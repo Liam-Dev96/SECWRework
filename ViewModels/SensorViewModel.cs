@@ -32,6 +32,7 @@ namespace SECWRework.ViewModels
         /// </summary>
         private async void LoadSensors()
         {
+     
             var sensors = await _dbService.GetAllSensors();
             Sensors.Clear();
             foreach (var sensor in sensors)
@@ -39,5 +40,7 @@ namespace SECWRework.ViewModels
                 Sensors.Add(sensor);
             }
         }
+
+        
     }
 }

@@ -30,6 +30,8 @@ namespace SECWRework
             builder.Services.AddSingleton(new BackupService(dbPath));
             builder.Services.AddSingleton<LocalDBService>();
             builder.Services.AddSingleton<AppShell>();
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<SensorPage>();
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MainViewModel>();
 
@@ -37,7 +39,13 @@ namespace SECWRework
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+            var appInstance = app.Services.GetService<App>();
+            if (appInstance != null)
+            {
+                appInstance.MainPage = new NavigationPage(new MainPage());
+            }
+            return app;
         }
     }
 }

@@ -122,8 +122,8 @@ namespace SECWRework.ViewModels
             {
                 await _dbService.AddUser(new UserModel
                 {
-                    F_Name = FirstName,
-                    L_Name = LastName,
+                    FirstName = FirstName,
+                    LastName = LastName,
                     Email = Email,
                     Phone_number = PhoneNumber,
                     Role = SelectedRole
@@ -134,8 +134,8 @@ namespace SECWRework.ViewModels
                 await _dbService.UpdateUser(new UserModel
                 {
                     Id = _editUserId,
-                    F_Name = FirstName,
-                    L_Name = LastName,
+                    FirstName = FirstName,
+                    LastName = LastName,
                     Email = Email,
                     Phone_number = PhoneNumber,
                     Role = SelectedRole
@@ -168,8 +168,8 @@ namespace SECWRework.ViewModels
             if (user != null)
             {
                 _editUserId = user.Id;
-                FirstName = user.F_Name ?? string.Empty;
-                LastName = user.L_Name ?? string.Empty;
+                FirstName = user.FirstName ?? string.Empty;
+                LastName = user.LastName ?? string.Empty;
                 Email = user.Email ?? string.Empty;
                 PhoneNumber = user.Phone_number ?? string.Empty;
                 SelectedRole = user.Role ?? string.Empty;
@@ -182,7 +182,15 @@ namespace SECWRework.ViewModels
         [RelayCommand]
         public async void BackupAsync()
         {
-            string backupPath = Path.Combine(FileSystem.AppDataDirectory, "Backup.db");
+            string backupFolder = Path.Combine(Environment.CurrentDirectory, "Backup");
+            // Ensure the folder exists
+            if (!Directory.Exists(backupFolder))
+            {
+            Directory.CreateDirectory(backupFolder);
+            }
+
+
+            string backupPath = Path.Combine(backupFolder, "Backup.db");
             await _backupService.BackupDatabaseAsync(backupPath);
             Console.WriteLine($"Database backed up to {backupPath}");
         }
@@ -193,7 +201,8 @@ namespace SECWRework.ViewModels
         [RelayCommand]
         public async void RestoreAsync()
         {
-            string backupPath = Path.Combine(FileSystem.AppDataDirectory, "Backup.db");
+            string backupFolder = Path.Combine(Environment.CurrentDirectory, "Backup");
+            string backupPath = Path.Combine(backupFolder, "Backup.db");
             await _backupService.RestoreDatabaseAsync(backupPath);
             LoadUsers();
             Console.WriteLine($"Database restored from {backupPath}");

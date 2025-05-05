@@ -20,13 +20,13 @@ namespace SECWRework.Model
         /// Gets or sets the first name of the user.
         /// </summary>
         [Column("First_Name")]
-        public string? F_Name { get; set; }
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// Gets or sets the last name of the user.
         /// </summary>
         [Column("Last_Name")]
-        public string? L_Name { get; set; }
+        public string? LastName { get; set; }
 
         /// <summary>
         /// Gets or sets the email address of the user.

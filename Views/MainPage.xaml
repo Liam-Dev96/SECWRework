@@ -4,6 +4,9 @@
              x:Class="SECWRework.Views.MainPage">
 
     <FlexLayout Direction="Column">
+
+        <Button Text="Go to Sensor Page" Clicked="OnNavigateToSensorPageClicked" />
+
         <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray">
             <Entry Text="{Binding FirstName}" Placeholder="Enter First Name"/>
             <Entry Text="{Binding LastName}" Placeholder="Enter Last Name"/>
@@ -49,7 +52,7 @@
                                 <Label Grid.Column="3" Text="{Binding PhoneNumber}" FontSize="Medium" />
                                 <Label Grid.Column="4" Text="{Binding SelectedRole}" FontSize="Medium" />                                                              
                                 <Button Grid.Column="5" Text="Edit" Command="{Binding EditUserCommand}" />
-                                <Button Grid.Column="6" Text="Delete" Command="{Binding DeleteUserAsyncCommand}" />                                        
+                                <Button Grid.Column="6" Text="Delete" Clicked="OnDeleteUserClicked" />                                        
                             </Grid>
                         </VerticalStackLayout>
                     </ViewCell>

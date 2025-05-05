@@ -1,5 +1,6 @@
 ﻿using SECWRework.Model;
 using SQLite;
+using OfficeOpenXml;
 
 namespace SECWRework
 {
@@ -26,6 +27,7 @@ namespace SECWRework
         {
             _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, DB_NAME));
             _connection.CreateTableAsync<UserModel>();
+            _connection.CreateTableAsync<SensorModel>();
         }
 
         /// <summary>
@@ -89,6 +91,50 @@ namespace SECWRework
         public async Task<SensorModel> GetSensorById(int id)
         {
             return await _connection.Table<SensorModel>().Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task ImportSensorsFromExcel(string filePath)
+        {
+            
+            // Ensure the EPPlus library is licensed for non-commercial use or use a commercial license
+            ExcelPackage.License.SetNonCommercialOrganization("My Noncommercial organization");
+
+            using var package = new ExcelPackage(new FileInfo(filePath));
+            var worksheet = package.Workbook.Worksheets[0]; // Assuming the first sheet contains the data
+
+            var sensors = new List<SensorModel>();
+
+            // Start reading from the second row (assuming the first row contains headers)
+            for (int row = 2; row <= worksheet.Dimension.End.Row; row++)
+            {
+                var sensor = new SensorModel
+                {
+                    Category = worksheet.Cells[row, 1].Text,
+                    Quantity = worksheet.Cells[row, 2].Text,
+                    Symbol = worksheet.Cells[row, 3].Text,
+                    Unit = worksheet.Cells[row, 4].Text,
+                    MeasurementFrequency = worksheet.Cells[row, 6].Text,
+                    SafeLevel = worksheet.Cells[row, 7].Text,
+                    Status = "Online", // Default status
+                    Location = worksheet.Cells[row, 9].Text
+                };
+
+                sensors.Add(sensor);
+            }
+
+            // Use a bulk insert for better performance
+            await BulkInsertSensors(sensors);
+        }
+
+        public async Task BulkInsertSensors(List<SensorModel> sensors)
+        {
+        await _connection.RunInTransactionAsync(tran =>
+            {
+            foreach (var sensor in sensors)
+            {
+                tran.Insert(sensor);
+            }
+            });     
         }
     }
 }
