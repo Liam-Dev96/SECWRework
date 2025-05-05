@@ -53,6 +53,7 @@ namespace SECWRework.ViewModels
                 report.AppendLine($"Sensor: {sensor.Quantity} ({sensor.Unit})");
                 report.AppendLine($"Status: {sensor.Status}");
                 report.AppendLine("Measurements:");
+                report.AppendLine("Location:");
                 for (int i = 0; i < sensor.HistoricalMeasurements.Count; i++)
                 {
                     report.AppendLine($"  {sensor.Timestamps[i]}: {sensor.HistoricalMeasurements[i]}");
